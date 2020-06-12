@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Car Price</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict Car Price</h1>
+
+     <!-- Form to enter new data for predictions  -->
+     <form action="{{ url_for('predict')}}"method="POST">
+       <label for="vehicleType">Vechile Type</label>
+       <select id="vehicleType" name="vehicleType">
+         <option value="0">andere</option>
+         <option value="1">bus</option>
+         <option value="2">cabrio</option>
+         <option value="3">coupe</option>
+         <option value="4">kleinwagen</option>
+         <option value="5">kombi</option>
+         <option value="6">limousine</option>
+         <option value="7">suv</option>
+         <option value="8">vehicleType</option>
+       </select>
+       <br>
+       <label for="fuelType">Fuel Type</label>
+       <select id="fuelType" name="fuelType">
+         <option value="0">andere</option>
+         <option value="1">benzin</option>
+         <option value="2">cng</option>
+         <option value="3">diesel</option>
+         <option value="4">elektro</option>
+         <option value="5">hybrid</option>
+         <option value="6">lpg</option>
+       </select>
+       <br>
+       <label for="gearbox">Gearbox</label>
+       <select id="gearbox" name="gearbox">
+         <option value="0">automatik</option>
+         <option value="1">manuell</option>
+         <option value="2">unknown</option>
+       </select>
+       <br>
+       <label for="yearOfRegistration">Year of Registration </label>
+       <input type="text" id="yearOfRegistration" name="yearOfRegistration">
+       <br>
+       <label for="powerPS">Power</label>
+       <input type="text" id="powerPS" name="powerPS">
+       <br>
+       <label for="kilometer">Kilometers </label>
+       <input type="text" id="kilometer" name="kilometer">
+       <br>
+
+       <label for="monthOfRegistration">Registration Month </label>
+       <input type="text" id="monthOfRegistration" name="monthOfRegistration">
+       <br>
+       <label for="notRepairedDamage">Repaired</label>
+       <select id="notRepairedDamage" name="notRepairedDamage">
+         <option value="0">nein</option>
+         <option value="1">ja</option>
+       </select>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+</body>
+</html>
